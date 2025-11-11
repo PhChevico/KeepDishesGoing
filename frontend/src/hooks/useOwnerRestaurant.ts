@@ -1,19 +1,15 @@
 import {useEffect, useState} from 'react';
 import {
-    acceptAllChanges,
-    acceptOrder,
+    acceptAllChanges, acceptOrder,
     createDish,
     createFoodMenu,
     createRestaurant,
     fetchAllDishes,
     fetchOwnerRestaurant,
-    fetchRestaurantMenu,
-    getRestaurantOrders,
+    fetchRestaurantMenu, getRestaurantOrders,
     markDishInStock,
-    markDishOutOfStock,
-    markOrderReadyForPickup,
-    publishDish,
-    refuseOrder,
+    markDishOutOfStock, markOrderReadyForPickup,
+    publishDish, refuseOrder,
     unpublishDish
 } from '../services/restaurantService';
 import type {RestaurantDto} from '../model/RestaurantOwner/Restaurant';
@@ -24,7 +20,6 @@ import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import type {OrderDto} from "../model/RestaurantOwner/OrderDetails.ts";
 
 type CreateRestaurantCommand = RestaurantDto;
-
 export type DishStatusAction = 'PUBLISH' | 'UNPUBLISH' | 'OUT_OF_STOCK' | 'IN_STOCK';
 
 const getErrorMessage = (err: unknown, defaultMessage: string = "An unknown error occurred."): string => {
@@ -48,50 +43,49 @@ export const useOwnerRestaurant = () => {
     const [error, setError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Function to load the restaurant data AND its dishes
-    const loadRestaurantAndDishes = async () => {
-        setIsLoading(true);
-        setError(null);
-        try {
-            const restaurantData = await fetchOwnerRestaurant();
-            setRestaurant(restaurantData);
-
-            if (restaurantData?.id) {
-                const restaurantId = restaurantData.id;
-
-                let loadedMenuId: string | null = null;
-                try {
-                    const menuData = await fetchRestaurantMenu(restaurantId);
-                    if (menuData?.id) {
-                        loadedMenuId = menuData.id;
-                    }
-                } catch (menuErr) {
-                    // Handled gracefully
-                }
-
-                setMenuId(loadedMenuId);
-
-                const loadedDishes = await fetchAllDishes(restaurantId);
-                setDishes(loadedDishes);
-            } else {
-                setDishes([]);
-                setMenuId(null);
-            }
-
-        } catch (err) {
-            setError(getErrorMessage(err, "Failed to fetch restaurant, menu, or dishes."));
-            setRestaurant(null);
-            setDishes([]);
-            setMenuId(null);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     // Initial fetch on component mount
     useEffect(() => {
+        const loadRestaurantAndDishes = async () => {
+            setIsLoading(true);
+            setError(null);
+            try {
+                const restaurantData = await fetchOwnerRestaurant();
+                setRestaurant(restaurantData);
+
+                if (restaurantData?.id) {
+                    const restaurantId = restaurantData.id;
+
+                    let loadedMenuId: string | null = null;
+                    try {
+                        const menuData = await fetchRestaurantMenu(restaurantId);
+                        if (menuData?.id) {
+                            loadedMenuId = menuData.id;
+                        }
+                    } catch (menuErr) {
+                        // Handled gracefully
+                    }
+
+                    setMenuId(loadedMenuId);
+
+                    const loadedDishes = await fetchAllDishes(restaurantId);
+                    setDishes(loadedDishes);
+                } else {
+                    setDishes([]);
+                    setMenuId(null);
+                }
+
+            } catch (err) {
+                setError(getErrorMessage(err, "Failed to fetch restaurant, menu, or dishes."));
+                setRestaurant(null);
+                setDishes([]);
+                setMenuId(null);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
         loadRestaurantAndDishes();
-    }, [loadRestaurantAndDishes]);
+    }, []); // Empty dependency array ensures it runs only once on mount
 
     // Function to handle restaurant creation
     const handleCreateRestaurant = async (newRestaurantData: CreateRestaurantCommand): Promise<RestaurantDto | null> => {
@@ -147,7 +141,11 @@ export const useOwnerRestaurant = () => {
             };
 
             const createdDish = await createDish(payload);
-            await loadRestaurantAndDishes(); // AWAIT the full refetch
+
+            // Reload dishes after creation
+            const loadedDishes = await fetchAllDishes(restaurant.id);
+            setDishes(loadedDishes);
+
             return createdDish;
         } catch (err) {
             setError(getErrorMessage(err, "Failed to create dish."));
@@ -157,10 +155,16 @@ export const useOwnerRestaurant = () => {
         }
     };
 
-    // Function to handle dish updates (pessimistic update using refetch)
-    const handleUpdateDish = (updatedDish: DishDto) => {
+    // Function to handle dish updates (refetch after update)
+    const handleUpdateDish = async (updatedDish: DishDto) => {
         console.log(`Update successful for dish ${updatedDish.id}. Triggering full refetch.`);
-        loadRestaurantAndDishes();
+        if (!restaurant?.id) return;
+        try {
+            const loadedDishes = await fetchAllDishes(restaurant.id);
+            setDishes(loadedDishes);
+        } catch (err) {
+            setError(getErrorMessage(err, "Failed to update dish."));
+        }
     };
 
     // Function to handle dish status changes
@@ -201,7 +205,12 @@ export const useOwnerRestaurant = () => {
             }
 
             await serviceCall;
-            await loadRestaurantAndDishes();
+
+            // Reload dishes after status change
+            if (restaurant?.id) {
+                const loadedDishes = await fetchAllDishes(restaurant.id);
+                setDishes(loadedDishes);
+            }
         } catch (err) {
             setError(getErrorMessage(err, "Failed to update dish status."));
         } finally {
@@ -209,14 +218,16 @@ export const useOwnerRestaurant = () => {
         }
     };
 
-
     // Function to accept all pending changes
     const handleAcceptAllChanges = async (): Promise<boolean> => {
         setIsSubmitting(true);
         setError(null);
         try {
             await acceptAllChanges();
-            await loadRestaurantAndDishes();
+            if (restaurant?.id) {
+                const loadedDishes = await fetchAllDishes(restaurant.id);
+                setDishes(loadedDishes);
+            }
             return true;
         } catch (err) {
             setError(getErrorMessage(err, "Failed to accept all changes."));
@@ -238,18 +249,9 @@ export const useOwnerRestaurant = () => {
         handleUpdateDish,
         handleChangeDishStatus,
         handleAcceptAllChanges,
-        refetch: loadRestaurantAndDishes
     };
 };
 
-export function useRestaurantOrders(restaurantId: string | undefined) {
-    return useQuery<OrderDto[], Error>({
-        queryKey: ["restaurantOrders", restaurantId],
-        queryFn: () => getRestaurantOrders(restaurantId!),
-        enabled: !!restaurantId,
-        refetchInterval: 15000,
-    });
-}
 
 export function useAcceptOrder() {
     const queryClient = useQueryClient();
@@ -292,5 +294,14 @@ export function useMarkOrderReadyForPickup() {
                     query.queryKey[0] === "restaurantOrders",
             });
         },
+    });
+}
+
+export function useRestaurantOrders(restaurantId: string | undefined) {
+    return useQuery<OrderDto[], Error>({
+        queryKey: ["restaurantOrders", restaurantId],
+        queryFn: () => getRestaurantOrders(restaurantId!),
+        enabled: !!restaurantId,
+        refetchInterval: 15000,
     });
 }
