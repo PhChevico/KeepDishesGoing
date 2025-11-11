@@ -1,0 +1,71 @@
+### Update existing dish (Salmon Teriyaki)
+PATCH http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "dishId": "69265d06-c440-4bc8-ac1e-0317b9177108",
+  "name": "Salmon Teriyaki",
+  "typeOfDish": "DESSERT",
+  "foodTags": ["FISH", "SEAFOOD"],
+  "description": "Salmon KANKER LECKER MAN",
+  "price": 12.58,
+  "picture": "salmon_teriyaki.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+
+###
+
+PATCH http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "dishId": "41043c1b-b9c2-4839-b18d-fe097ecbe0ad",
+  "name": "Margherita Pizza",
+  "typeOfDish": "MAIN",
+  "foodTags": ["VEGETARIAN", "ITALIAN"],
+  "description": "Classic Neapolitan pizza with San Marzano tomatoes, mozzarella di bufala, and fresh basil.",
+  "price": 12.20,
+  "picture": "margherita_pizza_updated.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+
+###
+
+PATCH http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "dishId": "86e07478-baa8-4396-8d7e-4cbd91618a9e",
+  "name": "Beef Burger Deluxe",
+  "typeOfDish": "MAIN",
+  "foodTags": ["BEEF", "AMERICAN"],
+  "description": "Thick juicy beef burger with melted cheddar, crispy bacon, lettuce, and smoky BBQ sauce in a toasted brioche bun.",
+  "price": 13.90,
+  "picture": "beef_burger_deluxe.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+###
+
+PATCH http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "dishId": "82d5ebc6-98fd-4b5a-9a82-cd1fa2ddcf9f",
+  "name": "Vegetable Spring Rolls",
+  "typeOfDish": "STARTER",
+  "foodTags": ["VEGETARIAN", "ASIAN"],
+  "description": "Crispy rolls packed with fresh vegetables and served with sweet chili dipping sauce.",
+  "price": 6.20,
+  "picture": "vegetable_spring_rolls_updated.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+
+###

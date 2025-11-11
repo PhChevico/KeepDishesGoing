@@ -1,0 +1,43 @@
+POST http://localhost:8080/dishes/85f62616-a29f-4f9d-9978-8fcb8fe7d571/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+
+###
+
+POST http://localhost:8080/dishes/1f754cfd-7d30-43a3-b359-20b7f7984cdb/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+
+###
+
+POST http://localhost:8080/dishes/69265d06-c440-4bc8-ac1e-0317b9177108/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+
+###
+
+POST http://localhost:8080/dishes/6f585ec9-aeb4-453a-a312-2ecda163a3d4/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+
+
+###
+
+POST http://localhost:8080/dishes/84ed83a9-dd9b-4c9d-bc8f-758e9b0a1d90/publish-to-menu/f2222222-2222-2222-2222-222222222222
+
+###
+
+POST http://localhost:8080/dishes/41043c1b-b9c2-4839-b18d-fe097ecbe0ad/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+
+###
+
+POST http://localhost:8080/dishes/86e07478-baa8-4396-8d7e-4cbd91618a9e/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+
+###
+
+POST http://localhost:8080/dishes/82d5ebc6-98fd-4b5a-9a82-cd1fa2ddcf9f/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+
+###
+
+POST http://localhost:8080/dishes/10fa294c-ff01-4ccb-9a06-48a1ac4b7d5c/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+
+###
+
+POST http://localhost:8080/dishes/8d08f1c6-1817-47e9-9b89-501dc99b6c25/publish-to-menu/678e5d98-3b34-42c1-93aa-527be8444557
+    
+
+###
+
+POST http://localhost:8080/dishes/faa3c3ee-0789-4a64-a8b2-53b92cb916ae/publish-to-menu/f1111111-1111-1111-1111-111111111111

@@ -1,0 +1,31 @@
+package be.kdg.keepdishesgoing.order.domain;
+
+public enum FoodTagProjection {
+    LACTOSE,
+    GLUTEN,
+    VEGAN,
+    VEGETARIAN,
+    DAIRY,
+    NUT,
+    HALAL,
+    MEAT,
+    FISH,
+    SEAFOOD,
+    GLUTEN_FREE,
+    SOY,
+    EGG,
+    SHELLFISH,
+    PEANUT,
+    SESAME,
+    SUGAR_FREE,
+    LOW_CARB,
+    KETO,
+    ORGANIC,
+    SPICY,
+    ITALIAN,
+    ASIAN,
+    MEDITERRANEAN,
+    AMERICAN,
+    FAST_FOOD,
+    BEEF
+}

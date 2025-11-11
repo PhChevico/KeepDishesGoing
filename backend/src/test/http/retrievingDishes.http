@@ -1,0 +1,59 @@
+### Get access token with normal user
+
+POST http://localhost:8180/realms/keepdishesgoing/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&client_id=backend-client&client_secret=ixbST6uPc2GlccuniJxpb8kNJUOK3veE&username=owner&password=owner
+
+//saving the access token
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
+
+
+### ASDASD
+
+GET localhost:8080/dishes/by-food-tag/GLUTEN
+
+
+### getting dishes by price asc
+
+GET localhost:8080/dishes?sort=price&direction=asc
+
+### getting dishes by price desc
+
+GET localhost:8080/dishes?sort=price&direction=desc
+
+### getting dishes by name asc
+
+GET localhost:8080/dishes?sort=name&direction=asc
+
+### getting dishes by name desc
+
+GET localhost:8080/dishes?sort=name&direction=desc
+
+
+###
+@host = localhost:8080
+@restaurant_id = 22222222-2222-2222-2222-222222222222
+
+###
+
+#1. Dishes - Default Sort (Name ASC)
+
+GET {{host}}/api/restaurants/{{restaurant_id}}/dishes
+Authorization: Bearer {{access_token}}
+
+###
+
+#Tests the in-memory filtering logic for the dish type.
+
+GET {{host}}/api/restaurants/{{restaurant_id}}/dishes?type=MAIN
+Authorization: Bearer {{access_token}}
+
+###
+
+# it scopes the list, filters by both Type and Tag,
+
+GET {{host}}/api/restaurants/{{restaurant_id}}/dishes?type=MAIN&foodTag=VEGAN&sort=price&direction=desc
+Authorization: Bearer {{access_token}}

@@ -1,0 +1,1 @@
+POST http://localhost:8080/api/payments/create?basketId=8fe2bf2f-4964-417c-af80-be731ce90a51

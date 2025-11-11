@@ -1,0 +1,209 @@
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Spaghetti Bolognese",
+  "typeOfDish": "MAIN",
+  "foodTags": ["MEAT", "GLUTEN", "DAIRY"],
+  "description": "Classic Italian pasta with rich beef sauce and parmesan cheese.",
+  "price": 13.50,
+  "picture": "spaghetti_bolognese.jpg",
+  "dishStatus": "ACTIVE",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+
+###
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Michael Bowl",
+  "typeOfDish": "MAIN",
+  "foodTags": ["VEGAN", "GLUTEN_FREE"],
+  "description": "A nourishing bowl with quinoa, roasted vegetables, and chickpeas.",
+  "price": 10.90,
+  "picture": "buddha_bowl.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Salmon Teriyaki",
+  "typeOfDish": "MAIN",
+  "foodTags": ["FISH", "GLUTEN"],
+  "description": "Grilled salmon glazed with teriyaki sauce, served with steamed rice.",
+  "price": 15.80,
+  "picture": "salmon_teriyaki.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Chocolate Lava Cake",
+  "typeOfDish": "DESSERT",
+  "foodTags": ["GLUTEN", "DAIRY", "NUT"],
+  "description": "Warm chocolate cake with a molten center, served with vanilla ice cream.",
+  "price": 6.50,
+  "picture": "chocolate_lava_cake.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Fresh Mint Lemonade",
+  "typeOfDish": "DRINK",
+  "foodTags": ["VEGAN", "GLUTEN_FREE"],
+  "description": "Refreshing homemade lemonade with mint leaves.",
+  "price": 3.80,
+  "picture": "mint_lemonade.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Halal Chicken Wrap",
+  "typeOfDish": "MAIN",
+  "foodTags": ["HALAL", "DAIRY", "GLUTEN"],
+  "description": "Grilled halal chicken with lettuce, tomato, and yogurt sauce in a tortilla wrap.",
+  "price": 8.90,
+  "picture": "chicken_wrap.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+#### 5 more down here
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Margherita Pizza",
+  "typeOfDish": "MAIN",
+  "foodTags": ["VEGETARIAN", "GLUTEN", "DAIRY"],
+  "description": "Classic pizza with tomato sauce, fresh mozzarella, and basil leaves.",
+  "price": 11.90,
+  "picture": "margherita_pizza.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Greek Salad",
+  "typeOfDish": "STARTER",
+  "foodTags": ["VEGETARIAN", "GLUTEN_FREE"],
+  "description": "Fresh salad with tomatoes, cucumbers, olives, onions, and feta cheese.",
+  "price": 7.50,
+  "picture": "greek_salad.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Beef Burger",
+  "typeOfDish": "MAIN",
+  "foodTags": ["MEAT", "GLUTEN", "DAIRY"],
+  "description": "Juicy beef patty with lettuce, tomato, cheese, and special sauce in a brioche bun.",
+  "price": 12.50,
+  "picture": "beef_burger.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Vegetable Spring Rolls",
+  "typeOfDish": "STARTER",
+  "foodTags": ["VEGETARIAN", "VEGAN"],
+  "description": "Crispy spring rolls filled with fresh vegetables, served with sweet chili sauce.",
+  "price": 5.90,
+  "picture": "spring_rolls.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Iced Coffee",
+  "typeOfDish": "DESSERT",
+  "foodTags": ["VEGETARIAN", "DAIRY"],
+  "description": "Chilled coffee with milk and ice, perfect for warm days.",
+  "price": 4.20,
+  "picture": "iced_coffee.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Tiramisu",
+  "typeOfDish": "DESSERT",
+  "foodTags": ["VEGETARIAN", "DAIRY", "GLUTEN"],
+  "description": "Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.",
+  "price": 7.20,
+  "picture": "tiramisu.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}
+
+###
+
+POST http://localhost:8080/dishes
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Stroganoff",
+  "typeOfDish": "MAIN",
+  "foodTags": ["VEGETARIAN", "DAIRY", "GLUTEN"],
+  "description": "Russian dish",
+  "price": 10.5,
+  "picture": "stroganoff.jpg",
+  "restaurantId": "22222222-2222-2222-2222-222222222222"
+}

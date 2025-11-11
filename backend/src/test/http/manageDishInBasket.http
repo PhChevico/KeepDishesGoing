@@ -1,0 +1,37 @@
+###
+
+POST http://localhost:8080/basket/8fe2bf2f-4964-417c-af80-be731ce90a51/addDish
+Content-Type: application/json
+Accept: application/json
+
+{
+  "dishId": "fd17fba9-00ac-42cf-8782-6037d6096cd8",
+  "quantity": 1
+}
+
+
+###
+
+PATCH http://localhost:8080/basket/593a86ad-7b80-41b7-b921-56a2e1005640/removeDish
+Content-Type: application/json
+Accept: application/json
+
+{
+  "dishId": "85f62616-a29f-4f9d-9978-8fcb8fe7d571",
+  "quantity": 1
+}
+
+###
+
+POST localhost:8080/dishes/apply-pending-changes
+
+
+
+###
+
+PATCH http://localhost:8080/dishes/82d5ebc6-98fd-4b5a-9a82-cd1fa2ddcf9f/mark-dish-out-of-stock
+
+###
+
+PATCH http://localhost:8080/dishes/82d5ebc6-98fd-4b5a-9a82-cd1fa2ddcf9f/mark-dish-in-stock
+
